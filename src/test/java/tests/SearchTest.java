@@ -36,7 +36,7 @@ public class SearchTest extends BaseTest {
             assertAll(
                     () -> $(AppiumBy.id("org.wikipedia.alpha:id/view_wiki_error_text")).
                             shouldHave(text("An error occurred")),
-                    () ->             $(AppiumBy.id("org.wikipedia.alpha:id/view_wiki_error_button")).
+                    () -> $(AppiumBy.id("org.wikipedia.alpha:id/view_wiki_error_button")).
                             shouldBe(visible)
             );
         });

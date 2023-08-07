@@ -3,6 +3,7 @@ package tests;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.android.AndroidDriver;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -14,6 +15,7 @@ import java.net.URL;
 import java.time.Duration;
 import java.util.List;
 
+@Disabled()
 public class SearchTests_old {
     @Test
     void successfulSearchTest() throws MalformedURLException, InterruptedException {

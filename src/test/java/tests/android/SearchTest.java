@@ -1,8 +1,10 @@
-package tests;
+package tests.android;
 
 import io.appium.java_client.AppiumBy;
-import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import tests.BaseTest;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.text;
@@ -12,6 +14,8 @@ import static com.codeborne.selenide.Selenide.$$;
 import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
+@Tag("android")
+@DisplayName("Android wikipedia app test")
 public class SearchTest extends BaseTest {
     @Test
     public void successfulSearchTest() {
@@ -30,16 +34,16 @@ public class SearchTest extends BaseTest {
             $(AppiumBy.accessibilityId("Search Wikipedia")).click();
             $(AppiumBy.id("org.wikipedia.alpha:id/search_src_text")).sendKeys("Appium");
         });
-        step("Клик по первому результату поиска", () -> {
-            $$(AppiumBy.id("org.wikipedia.alpha:id/search_container")).get(0).click();
-        });
-        step("Проверка экрана ошибки", () -> {
+        step("Клик по первому результату поиска", () ->
+            $$(AppiumBy.id("org.wikipedia.alpha:id/search_container")).get(0).click()
+        );
+        step("Проверка экрана ошибки", () ->
             assertAll(
                     () -> $(AppiumBy.id("org.wikipedia.alpha:id/view_wiki_error_text")).
                             shouldHave(text("An error occurred")),
                     () -> $(AppiumBy.id("org.wikipedia.alpha:id/view_wiki_error_button")).
                             shouldBe(visible)
-            );
-        });
+            )
+        );
     }
 }

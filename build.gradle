@@ -40,6 +40,12 @@ dependencies {
             "org.aeonbits.owner:owner:1.0.4"
     )
 }
+compileJava {
+    options.encoding = 'UTF-8'
+}
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
 
 tasks.withType(Test).configureEach {
     useJUnitPlatform()
@@ -50,5 +56,16 @@ tasks.withType(Test).configureEach {
             events "started", "skipped", "failed", "standard_error", "standard_out"
             exceptionFormat "short"
         }
+    }
+}
+
+tasks.register('android_test', Test) {
+    useJUnitPlatform {
+        includeTags("android")
+    }
+}
+tasks.register('ios_test', Test) {
+    useJUnitPlatform {
+        includeTags("ios")
     }
 }

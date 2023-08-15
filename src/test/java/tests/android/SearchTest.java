@@ -1,7 +1,6 @@
 package tests.android;
 
 import io.appium.java_client.AppiumBy;
-import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -36,15 +35,15 @@ public class SearchTest extends BaseTest {
             $(AppiumBy.id("org.wikipedia.alpha:id/search_src_text")).sendKeys("Appium");
         });
         step("Клик по первому результату поиска", () ->
-            $$(AppiumBy.id("org.wikipedia.alpha:id/search_container")).get(0).click()
+                $$(AppiumBy.id("org.wikipedia.alpha:id/search_container")).get(0).click()
         );
         step("Проверка экрана ошибки", () ->
-            assertAll(
-                    () -> $(AppiumBy.id("org.wikipedia.alpha:id/view_wiki_error_text")).
-                            shouldHave(text("An error occurred")),
-                    () -> $(AppiumBy.id("org.wikipedia.alpha:id/view_wiki_error_button")).
-                            shouldBe(visible)
-            )
+                assertAll(
+                        () -> $(AppiumBy.id("org.wikipedia.alpha:id/view_wiki_error_text")).
+                                shouldHave(text("An error occurred")),
+                        () -> $(AppiumBy.id("org.wikipedia.alpha:id/view_wiki_error_button")).
+                                shouldBe(visible)
+                )
         );
     }
 }
